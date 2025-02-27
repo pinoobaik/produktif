@@ -7,8 +7,12 @@ class ManagementUserController extends Controller
 {
     public function index()
     {
-        return "Ini adalah method index dalam ManagementUserController";
+        $nama = "Veno Renanda";
+        $matkul = ["WSIWF", "Kalkulus", "WSIMF"];
+
+        return view('home', ['nama' => $nama, 'mata_kuliah' => $matkul]);
     }
+
 
     public function create()
     {

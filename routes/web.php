@@ -16,3 +16,6 @@ Route::resource('/user', ManagementUserController::class);
 // Route::get('/users/{id}/edit', [ManagementUserController::class, 'edit']);
 // Route::put('/users/{id}', [ManagementUserController::class, 'update']);
 // Route::delete('/users/{id}', [ManagementUserController::class, 'destroy']);
+
+Route::get('/home', [ManagementUserController::class, 'index']);
+
