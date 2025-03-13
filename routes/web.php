@@ -46,3 +46,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
+Route::group(['namespace' => 'App\Http\Controllers\backend'], function () {
+    Route::resource('dashboard', DashboardController::class);
+    Route::resource('pengalaman_kerja', PengalamanKerjaController::class);
+    Route::resource('pendidikan', PendidikanController::class);
+});
