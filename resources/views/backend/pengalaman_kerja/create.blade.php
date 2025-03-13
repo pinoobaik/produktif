@@ -9,7 +9,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><i class="bi bi-house-door"></i> <a
-                                    href="{{ route('dash.index') }}">Home</a></li>
+                                    href="{{ route('dashboard.index') }}">Home</a></li>
                             <li class="breadcrumb-item"><i class="bi bi-file-earmark-text"></i> Riwayat Hidup</li>
                             <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-briefcase"></i>
                                 Pengalaman Kerja</li>

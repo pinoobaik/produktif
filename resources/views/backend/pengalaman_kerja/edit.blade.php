@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <h3 class="page-header"><i class="icon_document_alt"></i> Edit Pengalaman Kerja</h3>
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-home"></i><a href="{{ url('dash.index') }}">Home</a></li>
+                        <li><i class="fa fa-home"></i><a href="{{ url('dashboard.index') }}">Home</a></li>
                         <li><i class="icon_document_alt"></i>Riwayat Hidup</li>
                         <li><i class="fa fa-files-o"></i><a href="{{ route('pengalaman_kerja.index') }}">Pengalaman
                                 Kerja</a></li>
