@@ -22,10 +22,10 @@ Route::get('/', function () {
 // }); laravel 8 keatas tidak mendukung sintaks ini
 
 // Rute untuk HomeController
-Route::resource('home', HomeController::class);
+// Route::resource('home', HomeController::class);
 
 // Rute untuk DashboardController
-Route::resource('dashboard', DashboardController::class);
+// Route::resource('dashboard', DashboardController::class);
 
 // Rute untuk ManagementUserController
 Route::resource('/user', ManagementUserController::class);
@@ -41,11 +41,9 @@ Route::resource('/user', ManagementUserController::class);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/home', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('home')->middleware('auth');
 
 Route::group(['namespace' => 'App\Http\Controllers\backend'], function () {
     Route::resource('dashboard', DashboardController::class);

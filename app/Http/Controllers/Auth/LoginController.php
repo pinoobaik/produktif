@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/home';
 
     public function __construct()
     {
@@ -39,7 +39,7 @@ class LoginController extends Controller
 
         // Proses login menggunakan Auth
         if (Auth::attempt($login)) {
-            return redirect()->route('dashboard'); // Redirect ke halaman utama jika sukses
+            return redirect()->route('home'); // Redirect ke halaman utama jika sukses
         }
 
         // Jika gagal, redirect kembali dengan pesan error
