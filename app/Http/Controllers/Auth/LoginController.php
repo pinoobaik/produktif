@@ -3,49 +3,46 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
 
-    protected function credentials(Request $request)
+    // Override fungsi login
+    public function login(Request $request)
     {
-        $field = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        // Validasi input username/email dan password
+        $this->validate($request, [
+            'username' => 'required|string', // Bisa berupa username atau email
+            'password' => 'required|string|min:6',
+        ]);
 
-        return [
-            $field => $request->input('email'),
-            'password' => $request->input('password'),
+        // Cek apakah input adalah email atau username
+        $loginType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        // Data login yang digunakan untuk proses autentikasi
+        $login = [
+            $loginType => $request->username,
+            'password' => $request->password
         ];
-    }
 
+        // Proses login menggunakan Auth
+        if (Auth::attempt($login)) {
+            return redirect()->route('dashboard'); // Redirect ke halaman utama jika sukses
+        }
+
+        // Jika gagal, redirect kembali dengan pesan error
+        return redirect()->route('login')->with('error', 'Username/Email atau Password salah!');
+    }
 }
