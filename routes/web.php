@@ -3,6 +3,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\ManagementUserController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\PegawaiController;
 
 // Route dasar
 Route::get('/', function () {
@@ -50,3 +52,13 @@ Route::group(['namespace' => 'App\Http\Controllers\backend'], function () {
     Route::resource('pengalaman_kerja', PengalamanKerjaController::class);
     Route::resource('pendidikan', PendidikanController::class);
 });
+
+//acara17
+Route::get('/session/create', [SessionController::class, 'create']);
+Route::get('/session/show', [SessionController::class, 'show']);
+Route::get('/session/delete', [SessionController::class, 'delete']);
+
+Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);
+
+Route::get('/formulir', [PegawaiController::class, 'formulir']);
+Route::post('/formulir/proses', [PegawaiController::class, 'proses']);
