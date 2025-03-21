@@ -37,7 +37,7 @@ class ApiPendidikanController extends Controller
             return response()->json(['message' => 'Data tidak ditemukan'], 404);
         }
         $pendidikan->update($request->all());
-        return response()->json(['status' => 'ok','message' =>'Pendidikan berhasil dihapus!'], 201);
+        return response()->json(['status' => 'ok','message' =>'Pendidikan berhasil diubah!'], 201);
     }
 
     
@@ -48,6 +48,6 @@ class ApiPendidikanController extends Controller
             return response()->json(['message' => 'Data tidak ditemukan'], 404);
         }
         $pendidikan->delete();
-        return response()->json(['message' => 'Pendidikan berhasil dihapus'], 201);
+        return response()->json(['status' => 'ok','message' => 'Pendidikan berhasil dihapus'], 201);
     }
 }

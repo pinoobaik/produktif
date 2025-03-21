@@ -19,7 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//acara 21
 Route::get('api_pendidikan', [ApiPendidikanController::class, 'getAll']);
+
+//acara 22
 Route::get('api_pendidikan/{id}', [ApiPendidikanController::class, 'getPen']);
 Route::post('api_pendidikan', [ApiPendidikanController::class, 'createPen']);
 Route::put('api_pendidikan/{id}', [ApiPendidikanController::class, 'updatePen']);
